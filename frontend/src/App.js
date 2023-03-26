@@ -10,8 +10,11 @@ function App() {
         <img src={loremaster} />
         <dif className="LoginContainer">
           <form class="login-elements" action="login" method="POST">
-            <p>Login</p>
-            <input class="login" name="login" type="text" placeholder="jan.kowalski@gmail.com"></input>
+            <p class="text">Login</p>
+            <input class="login" name="login" type="text" placeholder="jan.kowalski@gmail.com" />
+            <p class="text">Password</p>
+            <input class="password" name="password" type="password" placeholder="*********" />
+            <button type="submit">Login</button>
           </form>
         </dif>
       </header>
