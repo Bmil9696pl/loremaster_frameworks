@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import LoginScreen from './views/LoginScreen';
+import HomeScreen from './views/HomeScreen';
 import reportWebVitals from './reportWebVitals';
+import Question from './views/Question';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Question />
   </React.StrictMode>
 );
 

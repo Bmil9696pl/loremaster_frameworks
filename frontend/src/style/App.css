@@ -84,6 +84,78 @@ button {
   width: 80%;
   height: 80%;
 }
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 21%;
+
+  background: #A986A1 0% 0% no-repeat padding-box;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.menu-buttons{
+  margin: 0;
+  display: 'flex';
+  flex-direction: 'column';
+  justify-content: 'center';
+  align-items: 'center';
+  width: '80%';
+  height: '70%';
+}
+
+.button {
+  background: #FFE6FF;
+  border-radius: 50px;
+  width: 100%;
+  height: 100%;
+  font-family: 'Laila';
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+}
+
+
+.button + .button {
+  margin-top: 3px;
+}
+
+.password + button {
+  margin-top: 6px;
+}
+
+.question-container {
+  background: #A986A1;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 23vh;
+}
+
+.answers-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2em;
+  padding-top: 2em;
+  width: 50vw;
+}
+
+.answer {
+background: #FFE6FF;
+border-radius: 15px;
+height: 11vw;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
 @keyframes App-logo-spin {
   from {
