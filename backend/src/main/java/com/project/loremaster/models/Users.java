@@ -29,8 +29,7 @@ public class Users {
     private int shadow_highscore;
     private int piltzaun_highscore;
 
-    public Users(long users_id, String email, String username, String password, int runeterra_highscore, int demacia_highscore, int noxus_highscore, int freljord_highscore, int ionia_highscore, int targon_highscore, int shurima_highscore, int shadow_highscore, int piltzaun_highscore) {
-        this.users_id = users_id;
+    public Users(String email, String username, String password, int runeterra_highscore, int demacia_highscore, int noxus_highscore, int freljord_highscore, int ionia_highscore, int targon_highscore, int shurima_highscore, int shadow_highscore, int piltzaun_highscore) {
         this.email = email;
         this.username = username;
         this.password = password;

@@ -1,12 +1,20 @@
 package com.project.loremaster.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Quiz")
 public class Quiz {
 
     @Id
+    @SequenceGenerator(
+            name = "question_sequence",
+            sequenceName = "question_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "question_sequence"
+    )
     private long quiz_id;
     private int region;
     private String question;
@@ -15,8 +23,7 @@ public class Quiz {
     private String wrong_answer2;
     private String wrong_answer3;
 
-    public Quiz(long quiz_id, int region, String question, String rightAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
-        this.quiz_id = quiz_id;
+    public Quiz(int region, String question, String rightAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
         this.region = region;
         this.question = question;
         this.right_answer = rightAnswer;
