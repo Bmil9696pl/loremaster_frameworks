@@ -1,10 +1,10 @@
 import React from 'react';
 import '../style/App.css';
 
-function Question() {
+const Question = () => {
   
   return (
-    <div className="App">
+    <div className="Question">
         <header className="App-header">
             {/*<p>Score: {score}</p>*/}
       {/*<p>Health: {health}</p>*/}

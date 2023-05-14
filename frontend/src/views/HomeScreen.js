@@ -2,7 +2,7 @@ import React from 'react';
 import '../style/App.css';
 import loremaster from '../img/Loremaster.svg'
 
-function HomeScreen(){
+const HomeScreen = () => {
     return(
         <div className="App">
         <header className='App-header'>
