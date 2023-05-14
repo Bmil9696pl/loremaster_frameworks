@@ -157,6 +157,36 @@ justify-content: center;
 align-items: center;
 }
 
+.select-container {
+  background: #A986A1;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 14vw;
+  font-family: Laila;
+}
+
+.region-button{
+  display: flex;
+  flex-direction: row;
+}
+
+.region-button > img {
+  width: 3vw;
+}
+
+.region-button > button {
+  width: 8vw;
+  margin:auto;
+}
+
+.region-button + .region-button {
+  margin-top: 3px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
