@@ -1,4 +1,4 @@
-package com.project.loremaster;
+/*package com.project.loremaster;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,4 +23,4 @@ public class LoremasterController {
     public String getMessage(){
         return "message sent";
     }
-}
+}*/
