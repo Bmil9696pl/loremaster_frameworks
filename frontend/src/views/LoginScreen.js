@@ -21,7 +21,7 @@ function LoginScreen(props) {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <img src={loremaster} />
-        <dif className="LoginContainer">
+        <dif className="LoginContainer" style={{padding: 5}}>
         {messages}
           <form class="login-elements" action="login" method="GET">
             <p class="text">Login</p>
@@ -31,6 +31,7 @@ function LoginScreen(props) {
             <button type="submit">Login</button>
           </form>
         </dif>
+        <a href='/register'>Register</a>
       </header>
     </div>
   );
