@@ -13,9 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication
-@EnableJpaRepositories("com.project.loremaster.models")
-//@EntityScan("com.project.loremaster.models")
-@ComponentScan("com.project.loremaster.repositories")
+
 public class LoremasterApplication {
 
     public static void main(String[] args) {

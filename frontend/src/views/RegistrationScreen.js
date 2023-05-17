@@ -18,8 +18,15 @@ const RegistrationScreen = () => {
 
     function handleSubmit(event){
         event.preventDefault();
+        var username = newUser.username;
+        var login = newUser.login;
+        var password = newUser.password;
         console.log(newUser);
-        axios.post('http://localhost:8080/users/add', newUser)
+        axios.post('http://localhost:8888/users/add', null, {params:{
+          username,
+          login,
+          password
+        }})
         .then(response => console.log(response))
         .catch(err => console.log(err));
     }
