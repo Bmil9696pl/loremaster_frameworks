@@ -4,12 +4,12 @@ import loremaster from '../img/Loremaster.svg'
 import '../style/App.css';
 
 
-function LoginScreen(props) {
+const LoginScreen = (props) => {
   
   const [messages, setMessages] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/messages')
+    fetch('http://localhost:8889/api/messages')
       .then(response => response.text())
       .then(data => {
         console.log(data);
@@ -21,16 +21,16 @@ function LoginScreen(props) {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <img src={loremaster} />
-        <dif className="LoginContainer" style={{padding: 5}}>
+        <div className="LoginContainer" style={{padding: 5}}>
         {messages}
-          <form class="login-elements" action="login" method="GET">
-            <p class="text">Login</p>
-            <input class="login" name="login" type="text" placeholder="jan.kowalski@gmail.com" />
-            <p class="text">Password</p>
-            <input class="password" name="password" type="password" placeholder="*********" />
+          <form className="login-elements" action="login" method="GET">
+            <p className="text">Login</p>
+            <input className="login" name="login" type="text" placeholder="jan.kowalski@gmail.com" />
+            <p className="text">Password</p>
+            <input className="password" name="password" type="password" placeholder="*********" />
             <button type="submit">Login</button>
           </form>
-        </dif>
+        </div>
         <a href='/register'>Register</a>
       </header>
     </div>

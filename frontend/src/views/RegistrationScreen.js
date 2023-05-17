@@ -17,9 +17,11 @@ const RegistrationScreen = () => {
     }
 
     function handleSubmit(event){
+      event.preventDefault();
+
       const options ={
         method: 'POST',
-        url: 'http://localhost:8888/users/add',
+        url: 'http://localhost:8889/users/add',
         headers: {'Content-Type': 'application/json'},
         data:{
           username: newUser.username,
@@ -28,7 +30,6 @@ const RegistrationScreen = () => {
         }
       } 
 
-      event.preventDefault();
       console.log(newUser);
       axios.request(options)
       .then(response => console.log(response))

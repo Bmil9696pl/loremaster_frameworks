@@ -1,4 +1,4 @@
-/*package com.project.loremaster.config;
+package com.project.loremaster.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,11 +18,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf().disable()
-                .authorizeRequests()
-                .requestMatchers("/random", "/signin", "/login");
+                .cors()
+                .and()
+                .authorizeHttpRequests()
+                .anyRequest()
+                .authenticated();
 
 
         return http.build();
     }
-}*/
+}

@@ -10,8 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/users")
-@CrossOrigin(origins = "http://localhost:3000")
 public class UsersController {
 
     private final UsersRepository usersRepository;
