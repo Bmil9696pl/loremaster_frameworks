@@ -1,4 +1,4 @@
-package com.project.loremaster.config;
+/*package com.project.loremaster.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,4 +20,4 @@ public class AppConfig {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
-}
+}*/

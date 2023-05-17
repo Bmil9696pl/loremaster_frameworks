@@ -23,15 +23,7 @@ public class LoremasterApplication {
         SpringApplication.run(LoremasterApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry){
-                registry.addMapping("/users/add").allowedOrigins("http://localhost:3000");
-            }
-        };
-    }
+
 
     @Bean
     PasswordEncoder passwordEncoder() {
