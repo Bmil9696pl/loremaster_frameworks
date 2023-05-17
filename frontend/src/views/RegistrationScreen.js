@@ -17,18 +17,22 @@ const RegistrationScreen = () => {
     }
 
     function handleSubmit(event){
-        event.preventDefault();
-        var username = newUser.username;
-        var login = newUser.login;
-        var password = newUser.password;
-        console.log(newUser);
-        axios.post('http://localhost:8888/users/add', null, {params:{
-          username,
-          login,
-          password
-        }})
-        .then(response => console.log(response))
-        .catch(err => console.log(err));
+      const options ={
+        method: 'POST',
+        url: 'http://localhost:8888/users/add',
+        headers: {'Content-Type': 'application/json'},
+        data:{
+          username: newUser.username,
+          login: newUser.login,
+          password: newUser.password
+        }
+      } 
+
+      event.preventDefault();
+      console.log(newUser);
+      axios.request(options)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
     }
 
     return (

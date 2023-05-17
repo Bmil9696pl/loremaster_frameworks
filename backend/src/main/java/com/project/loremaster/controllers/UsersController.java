@@ -1,11 +1,12 @@
 package com.project.loremaster.controllers;
 
+import com.project.loremaster.dto.RegisterDto;
 import com.project.loremaster.entity.UsersEntity;
-import com.project.loremaster.models.Users;
 import com.project.loremaster.repositories.UsersRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 @RestController
@@ -14,9 +15,11 @@ import java.util.Optional;
 public class UsersController {
 
     private final UsersRepository usersRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsersController(UsersRepository usersRepository) {
+    public UsersController(UsersRepository usersRepository, PasswordEncoder passwordEncoder) {
         this.usersRepository = usersRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/get")
@@ -30,20 +33,17 @@ public class UsersController {
         }
     }
 
-    record NewUserRequest(
-            String login,
-            String password,
-            String username
-    ){
-
-    }
-
     @PostMapping("/add")
-    public void addUser(@RequestParam("username") String username, @RequestParam("login") String login, @RequestParam("password") String password){
+    public ResponseEntity<Object> addUser(@RequestBody RegisterDto registerDto){
         UsersEntity user = new UsersEntity();
-        user.setUsername(username);
-        user.setEmail(login);
-        user.setPassword(password);
-        usersRepository.save(user);
+        user.setUsername(registerDto.getUsername());
+        user.setEmail(registerDto.getLogin());
+        user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        try {
+            usersRepository.save(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(null);
+        } catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        }
     }
 }
