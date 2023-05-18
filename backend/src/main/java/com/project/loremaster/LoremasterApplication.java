@@ -15,26 +15,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication
-
 public class LoremasterApplication {
 
     public static void main(String[] args) {
-        //TODO the whole project!
         SpringApplication.run(LoremasterApplication.class, args);
-    }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer(){
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/users/add").allowedOrigins("http://localhost:3000/");
-            }
-        };
-    }
-
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
