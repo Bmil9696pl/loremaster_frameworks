@@ -38,7 +38,7 @@ public class UsersController {
     }
 
     @PostMapping("/get")
-    public ResponseEntity<String> getUsers(@RequestBody LoginDto loginDto){
+    public ResponseEntity<AuthResponseDto> getUsers(@RequestBody LoginDto loginDto){
         Authentication authetication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getLogin(),
@@ -46,7 +46,7 @@ public class UsersController {
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authetication);
-        /*UsersEntity user = usersRepository.findByEmail(loginDto.getLogin()).orElse(null);
+        UsersEntity user = usersRepository.findByEmail(loginDto.getLogin()).orElse(null);
 
         String token = Jwts
                 .builder()
@@ -55,8 +55,9 @@ public class UsersController {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .signWith(Keys.hmacShaKeyFor(Base64.getDecoder().decode(KEY)), SignatureAlgorithm.HS256)
-                .compact();*/
-        return new ResponseEntity<>("login success", HttpStatus.OK);
+                .compact();
+        return ResponseEntity.ok(AuthResponseDto.builder().token(token).build());
+        //return new ResponseEntity<>("login success", HttpStatus.OK);
     }
 
     @PostMapping("/add")

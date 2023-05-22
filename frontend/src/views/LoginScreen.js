@@ -16,7 +16,7 @@ const LoginScreen = (props) => {
     e.preventDefault();
     const options = {
       method: 'POST',
-      url: 'http://localhost:8889/users/get',
+      url: 'http://localhost:8888/users/get',
       headers: {'Content-Type': 'application/json'},
       data: {
         login: login,

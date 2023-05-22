@@ -21,7 +21,7 @@ const RegistrationScreen = () => {
 
       const options ={
         method: 'POST',
-        url: 'http://localhost:8889/users/add',
+        url: 'http://localhost:8888/users/add',
         headers: {'Content-Type': 'application/json'},
         data:{
           username: newUser.username,
@@ -40,7 +40,7 @@ const RegistrationScreen = () => {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <img src={loremaster} />
+          <img src={loremaster} alt='loremaster'/>
           <div className="LoginContainer">
             <form className="login-elements" onSubmit={handleSubmit}>
               <p className="text">Username</p>

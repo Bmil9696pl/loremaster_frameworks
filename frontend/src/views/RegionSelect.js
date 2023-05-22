@@ -6,6 +6,23 @@ import noxus from "../img/Noxus_LoR_Region.webp"
 
 
 const RegionSelect = () => {
+
+    async function runeterraHandler(e){
+        sessionStorage.setItem('region', 0);
+        window.location.href = 'question';
+    }
+
+    async function demaciaHandler(e){
+        sessionStorage.setItem('region', 1);
+        window.location.href = 'question';
+    }
+
+    async function noxusHandler(e){
+        sessionStorage.setItem('region', 2);
+        window.location.href = 'question';
+    }
+
+
     return(
     <div className="App">
         <header className="App-header">
@@ -30,19 +47,19 @@ const RegionSelect = () => {
             <div className="select-container">
                 <div className="region-button">
                     <img src={runeterra} alt="Runeterra" />
-                    <button type="submit" name="runeterra">
+                    <button type="submit" name="runeterra" onClick={runeterraHandler}>
                         Runeterra
                     </button>
                 </div>
                 <div className="region-button">
                     <img src={demacia} alt="Demacia" />
-                    <button type="submit" name="demacia">
+                    <button type="submit" name="demacia" onClick={demaciaHandler}>
                         Demacia
                     </button>
                 </div>
                 <div className="region-button">
                     <img src={noxus} alt="Noxus" />
-                    <button type="submit" name="noxus">
+                    <button type="submit" name="noxus" onClick={noxusHandler}>
                         Noxus
                     </button>
                 </div>
