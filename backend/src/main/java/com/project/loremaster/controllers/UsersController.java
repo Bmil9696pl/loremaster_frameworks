@@ -3,8 +3,10 @@ package com.project.loremaster.controllers;
 import com.project.loremaster.dto.AuthResponseDto;
 import com.project.loremaster.dto.LoginDto;
 import com.project.loremaster.dto.RegisterDto;
+import com.project.loremaster.dto.SetScoreDto;
 import com.project.loremaster.entity.UsersEntity;
 import com.project.loremaster.repositories.UsersRepository;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import io.jsonwebtoken.Jwts;
 
+import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -72,5 +75,18 @@ public class UsersController {
         } catch (Exception ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
         }
+    }
+
+    @PostMapping("/setscore")
+    public ResponseEntity<Object> setScore(@RequestHeader("Authorization") String token ,@RequestBody SetScoreDto setScoreDto){
+        String[] chunks = token.split("\\.");
+        Base64.Decoder decoder = Base64.getUrlDecoder();
+        String payload = new String(decoder.decode(chunks[1]));
+        System.out.println(payload);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
+    }
+    private Key getSignInKey() {
+        byte[] keyBytes = Base64.getDecoder().decode(KEY);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }
