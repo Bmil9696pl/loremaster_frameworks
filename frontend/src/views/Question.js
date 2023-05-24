@@ -30,8 +30,14 @@ const Question = () => {
     }
     };
     axios.request(options)
-    .then(response => console.log(response)
-    ).catch(error => console.log(error));
+    .then(function (response) {
+      console.log(response)
+      window.location.href = '/home';
+    }
+    ).catch(function (error){ 
+      console.log(error)
+      window.location.href = '/home';
+    });
   }
 
   useEffect(() =>{
@@ -62,7 +68,7 @@ const Question = () => {
       setAnswer4(questions.splice(Math.floor(Math.random()*questions.length), 1));
     }).catch(()=>{
       handleSaveScore();
-      window.location.href = '/home';
+      //window.location.href = '/home';
     });
 
   }, [score, health])
@@ -75,11 +81,11 @@ const Question = () => {
     if(selectedAnswer === correctAnswer){
       setScore(score + 1);
     } else {
-      setHealth(health - 1);
-      if(health===0){
+      if(health===1){
         handleSaveScore();
-        window.location.href = '/home';
+        //window.location.href = '/home';
       }
+      setHealth(health - 1);
     }
   }
 
