@@ -3,6 +3,7 @@ package com.project.loremaster.config;
 import com.project.loremaster.repositories.UsersRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 public class AppConfig {
@@ -42,5 +44,12 @@ public class AppConfig {
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> usersRepository.findByEmail(username).orElse(null);
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(){
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(transactionManager.getEntityManagerFactory());
+        return transactionManager;
     }
 }

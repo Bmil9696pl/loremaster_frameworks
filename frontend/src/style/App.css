@@ -182,6 +182,13 @@ align-items: center;
   font-family: Laila;
 }
 
+.stext{
+  font-family: Laila;
+  font-size: 16px;
+  font-size: 6vw;
+  color: #FFE6FF;
+}
+
 .region-button{
   display: flex;
   flex-direction: row;
@@ -197,6 +204,20 @@ align-items: center;
 }
 
 .region-button + .region-button {
+  margin-top: 3px;
+}
+
+.leaderboard-user {
+  display: flex;
+  flex-direction: row;
+  background: #FFE6FF;
+  border-radius: 50px;
+  width: 20vw;
+  
+  justify-content: space-evenly;
+}
+
+.leaderboard-user + .leaderboard-user {
   margin-top: 3px;
 }
 

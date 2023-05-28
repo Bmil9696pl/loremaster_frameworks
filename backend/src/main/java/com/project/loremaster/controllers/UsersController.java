@@ -1,10 +1,9 @@
 package com.project.loremaster.controllers;
 
-import com.project.loremaster.dto.AuthResponseDto;
-import com.project.loremaster.dto.LoginDto;
-import com.project.loremaster.dto.RegisterDto;
-import com.project.loremaster.dto.SetScoreDto;
+import com.project.loremaster.dto.*;
 import com.project.loremaster.entity.UsersEntity;
+import com.project.loremaster.models.Leader;
+import com.project.loremaster.models.LeaderRepo;
 import com.project.loremaster.repositories.UsersRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,14 +14,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import io.jsonwebtoken.Jwts;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.security.Key;
-import java.util.Base64;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -38,6 +37,16 @@ public class UsersController {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+    }
+
+    @GetMapping("/getleaders")
+    public ResponseEntity<List<LeadersResponseDto>> getLeaders(){
+        List<UsersEntity> usersList = usersRepository.getAllLeaders();
+        List<LeadersResponseDto> leadersList = new ArrayList<>();
+        usersList.forEach((leader) ->{
+            leadersList.add(LeadersResponseDto.builder().username(leader.getUsername()).score(leader.getRuneterraHighscore().toString()).build());
+        });
+        return ResponseEntity.ok(leadersList);
     }
 
     @PostMapping("/get")
@@ -82,7 +91,18 @@ public class UsersController {
         String[] chunks = token.split("\\.");
         Base64.Decoder decoder = Base64.getUrlDecoder();
         String payload = new String(decoder.decode(chunks[1]));
-        System.out.println(payload);
+        String username = payload.split("\"")[3];
+        switch (Integer.parseInt(setScoreDto.getRegionId())){
+            case 0 ->{
+                usersRepository.setRuneterraHighscore(username, Integer.parseInt(setScoreDto.getScore()));
+            }
+            case 1 ->{
+                usersRepository.setDemaciaHighscore(username, Integer.parseInt(setScoreDto.getScore()));
+            }
+            case 2 ->{
+                usersRepository.setNoxusHighscore(username, Integer.parseInt(setScoreDto.getScore()));
+            }
+        }
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
     }
     private Key getSignInKey() {

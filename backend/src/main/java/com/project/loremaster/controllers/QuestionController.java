@@ -22,8 +22,12 @@ public class QuestionController {
         String[] numbers = questionRequestDto.getPastQuestionId().split(";");
         Integer[] pastQuestionId = new Integer[numbers.length];
         for(int c = 0; c < numbers.length; c++) pastQuestionId[c] = Integer.parseInt(numbers[c]);
-        QuizEntity question = quizRepository.findQuestion(Integer.parseInt(questionRequestDto.getRegionId()), pastQuestionId).orElse(null);
-
+        QuizEntity question;
+        if(Integer.parseInt(questionRequestDto.getRegionId()) == 0){
+            question = quizRepository.findQuestionAllRegions(pastQuestionId).orElse(null);
+        }else {
+            question = quizRepository.findQuestion(Integer.parseInt(questionRequestDto.getRegionId()), pastQuestionId).orElse(null);
+        }
 
         return ResponseEntity.ok(QuestionDto.builder().questionId(String.valueOf(question.getQuizId())).question(question.getQuestion()).right_answer(question.getRightAnswer()).wrong_answer1(question.getWrongAnswer1()).wrong_answer2(question.getWrongAnswer2()).wrong_answer3(question.getWrongAnswer3()).build());
     }

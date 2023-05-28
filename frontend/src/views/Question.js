@@ -25,8 +25,8 @@ const Question = () => {
         'Content-Type': 'application/json'
     },
       data: {
-        regionId: region.toString,
-        score: score.toString
+        regionId: region,
+        score: score
     }
     };
     axios.request(options)
