@@ -32,7 +32,7 @@ const Leaderboard = () => {
     return (
       <div className="App-header">
         <p className="stext">Leaders:</p>
-        <div className="select-container" style={{ width: '25vw' }}>
+        <div className="leaderboard-container">
           <section className="leaders">
             <form style={{ paddingTop: '10px', paddingBottom: '10px' }}>
               {leaders.map((userScore) => (

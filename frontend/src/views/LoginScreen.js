@@ -39,7 +39,7 @@ const LoginScreen = (props) => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <img src={loremaster} alt='loremaster'/>
+        <img className = "Loremaster" src={loremaster} alt='loremaster'/>
         <div className="LoginContainer" style={{padding: 5}}>
         {messages}
           <form className="login-elements">
